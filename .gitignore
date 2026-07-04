@@ -9,6 +9,7 @@
 
 # Runtime storage - generated locally, not committed
 storage/originals/*
+storage/workspace/*
 storage/processed/*
 storage/exports/*
 storage/thumbnails/*
