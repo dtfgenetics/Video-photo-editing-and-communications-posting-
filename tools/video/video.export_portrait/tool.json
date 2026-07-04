@@ -1,0 +1,18 @@
+{
+  "id": "video.export_portrait",
+  "name": "Export Portrait Video",
+  "version": "0.1.0",
+  "category": "video",
+  "description": "Create a clean 4:5 portrait export for social feed content.",
+  "inputs": ["processedVideo"],
+  "outputs": ["portraitVideo"],
+  "settings": {
+    "width": 1080,
+    "height": 1350,
+    "fitMode": "contain_or_crop"
+  },
+  "requires": ["ffmpeg"],
+  "supportsBatch": true,
+  "emits": ["video.exported", "job.completed", "job.failed"],
+  "errors": ["VIDEO_030", "VIDEO_031"]
+}
