@@ -10,9 +10,9 @@ Before a new batch is added, check that the prior batch matches `docs/repo-struc
 
 ### Batch 1 - Foundation identity
 
-Status: in progress / partial verified
+Status: verified
 
-Expected:
+Verified files:
 
 - README.md
 - docs/scope.md
@@ -25,9 +25,9 @@ Expected:
 
 ### Batch 2 - System contracts
 
-Status: in progress / partial verified
+Status: verified
 
-Expected:
+Verified files:
 
 - schemas/tool.schema.json
 - schemas/recipe.schema.json
@@ -89,4 +89,4 @@ Expected:
 
 ## Next verification action
 
-Verify each expected file in Batches 1-5, then continue with remaining placeholder folders for plugins, brand-kits, content-packs, storage, tests, scripts, and release.
+Verify Batch 3 recipes and Batch 4 tool manifests before adding remaining placeholder folders.
