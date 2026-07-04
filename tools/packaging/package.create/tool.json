@@ -1,0 +1,14 @@
+{
+  "id": "package.create",
+  "name": "Create Package Folder",
+  "version": "0.1.0",
+  "category": "packaging",
+  "description": "Collect recipe outputs into a package folder and create a package manifest.",
+  "inputs": ["exports", "thumbnailFile", "captionFiles"],
+  "outputs": ["packageFolder", "packageManifest"],
+  "settings": {},
+  "requires": [],
+  "supportsBatch": true,
+  "emits": ["package.created", "job.completed", "job.failed"],
+  "errors": ["PACKAGE_001", "PACKAGE_002"]
+}
