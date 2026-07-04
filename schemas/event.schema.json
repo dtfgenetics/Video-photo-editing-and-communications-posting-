@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-engine.local/schemas/event.schema.json",
+  "title": "Event Record",
+  "type": "object",
+  "required": ["eventId", "eventName", "createdAt"],
+  "properties": {
+    "eventId": { "type": "string" },
+    "eventName": { "type": "string", "pattern": "^[a-z]+\\.[a-z0-9_]+$" },
+    "createdAt": { "type": "string" },
+    "source": { "type": "string" },
+    "jobId": { "type": "string" },
+    "projectId": { "type": "string" },
+    "mediaId": { "type": "string" },
+    "packageId": { "type": "string" },
+    "payload": { "type": "object" }
+  },
+  "additionalProperties": false
+}
