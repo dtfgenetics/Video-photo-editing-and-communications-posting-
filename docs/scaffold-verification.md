@@ -42,9 +42,9 @@ Verified files:
 
 ### Batch 3 - MVP recipes
 
-Status: in progress / partial verified
+Status: verified
 
-Expected:
+Verified files:
 
 - recipes/clean-posting-package.json
 - recipes/short-form-package.json
@@ -89,4 +89,4 @@ Expected:
 
 ## Next verification action
 
-Verify Batch 3 recipes and Batch 4 tool manifests before adding remaining placeholder folders.
+Verify Batch 4 tool manifests before adding remaining placeholder folders.
