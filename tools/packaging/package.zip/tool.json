@@ -1,0 +1,14 @@
+{
+  "id": "package.zip",
+  "name": "Create Package Zip",
+  "version": "0.1.0",
+  "category": "packaging",
+  "description": "Create a downloadable ZIP file from a completed package folder.",
+  "inputs": ["packageFolder", "packageManifest"],
+  "outputs": ["packageZip"],
+  "settings": {},
+  "requires": [],
+  "supportsBatch": true,
+  "emits": ["package.zipped", "job.completed", "job.failed"],
+  "errors": ["PACKAGE_010", "PACKAGE_011"]
+}
