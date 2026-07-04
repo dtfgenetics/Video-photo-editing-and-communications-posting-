@@ -105,10 +105,10 @@ Verified content/asset placeholders:
 - content-packs/internal/.gitkeep
 - content-packs/public/.gitkeep
 
-Expected runtime placeholders:
+Verified runtime placeholders:
 
 - storage/originals/.gitkeep
-- storage/processed/.gitkeep
+- storage/workspace/.gitkeep
 - storage/exports/.gitkeep
 - storage/thumbnails/.gitkeep
 - storage/captions/.gitkeep
@@ -132,4 +132,4 @@ Expected test/script/release placeholders:
 
 ## Next verification action
 
-Add and verify runtime placeholders, then continue to test/script/release placeholders.
+Add and verify test/script/release placeholders. After that, Batch 5 can be marked verified.
