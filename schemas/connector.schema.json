@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-engine.local/schemas/connector.schema.json",
+  "title": "Connector Manifest",
+  "type": "object",
+  "required": ["id", "name", "version", "authType", "inputs", "outputs"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^connector\\.[a-z0-9_]+$" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "description": { "type": "string" },
+    "authType": { "type": "string", "enum": ["none", "apiKey", "oauth", "webhook", "local"] },
+    "inputs": { "type": "array", "items": { "type": "string" } },
+    "outputs": { "type": "array", "items": { "type": "string" } },
+    "permissions": { "type": "array", "items": { "type": "string" } },
+    "settings": { "type": "object" },
+    "eventsHandled": { "type": "array", "items": { "type": "string" } },
+    "eventsEmitted": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
