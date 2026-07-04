@@ -1,0 +1,18 @@
+{
+  "id": "video.export_landscape",
+  "name": "Export Landscape Video",
+  "version": "0.1.0",
+  "category": "video",
+  "description": "Create a clean 16:9 landscape export for YouTube, website, and general video use.",
+  "inputs": ["processedVideo"],
+  "outputs": ["landscapeVideo"],
+  "settings": {
+    "width": 1920,
+    "height": 1080,
+    "fitMode": "contain_or_crop"
+  },
+  "requires": ["ffmpeg"],
+  "supportsBatch": true,
+  "emits": ["video.exported", "job.completed", "job.failed"],
+  "errors": ["VIDEO_040", "VIDEO_041"]
+}
