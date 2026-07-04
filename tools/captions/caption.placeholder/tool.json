@@ -1,0 +1,16 @@
+{
+  "id": "caption.placeholder",
+  "name": "Create Caption Placeholders",
+  "version": "0.1.0",
+  "category": "captions",
+  "description": "Create editable text files for platform captions, hashtags, and posting notes.",
+  "inputs": ["project", "mediaMetadata"],
+  "outputs": ["captionFiles"],
+  "settings": {
+    "platforms": ["instagram", "facebook", "youtube", "discord"]
+  },
+  "requires": [],
+  "supportsBatch": true,
+  "emits": ["caption.created", "job.completed", "job.failed"],
+  "errors": ["CAPTION_001"]
+}
