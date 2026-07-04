@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-engine.local/schemas/tool.schema.json",
+  "title": "Tool Manifest",
+  "type": "object",
+  "required": ["id", "name", "version", "category", "inputs", "outputs"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z]+\\.[a-z0-9_]+$" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "category": { "type": "string" },
+    "description": { "type": "string" },
+    "inputs": { "type": "array", "items": { "type": "string" } },
+    "outputs": { "type": "array", "items": { "type": "string" } },
+    "settings": { "type": "object" },
+    "requires": { "type": "array", "items": { "type": "string" } },
+    "supportsBatch": { "type": "boolean" },
+    "emits": { "type": "array", "items": { "type": "string" } },
+    "errors": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
