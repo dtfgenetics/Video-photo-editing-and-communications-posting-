@@ -1,0 +1,55 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Runtime storage - generated locally, not committed
+storage/originals/*
+storage/processed/*
+storage/exports/*
+storage/thumbnails/*
+storage/captions/*
+storage/packages/*
+storage/logs/*
+storage/cache/*
+storage/backups/*
+storage/temp/*
+!storage/**/.gitkeep
+
+# Generated media and packages
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.m4v
+*.mp3
+*.wav
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# Logs and caches
+*.log
+.cache/
+.tmp/
+tmp/
+temp/
+node_modules/
+dist/
+build/
+coverage/
+.pytest_cache/
+__pycache__/
+*.pyc
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+.idea/
