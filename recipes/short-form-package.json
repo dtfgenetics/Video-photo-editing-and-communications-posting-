@@ -1,0 +1,20 @@
+{
+  "id": "recipe.short_form_package",
+  "name": "Short Form Package",
+  "version": "0.1.0",
+  "description": "Create a clean vertical short-form export with thumbnail, caption placeholders, and ZIP package.",
+  "inputs": ["video"],
+  "steps": [
+    { "tool": "media.probe" },
+    { "tool": "media.validate" },
+    { "tool": "video.convert", "settings": { "format": "mp4", "quality": "balanced" } },
+    { "tool": "video.export_vertical", "settings": { "width": 1080, "height": 1920 } },
+    { "tool": "thumbnail.generate" },
+    { "tool": "caption.placeholder" },
+    { "tool": "package.create" },
+    { "tool": "package.zip" }
+  ],
+  "outputs": ["packageZip"],
+  "failureBehavior": "stop",
+  "emits": ["recipe.started", "recipe.completed", "recipe.failed"]
+}
