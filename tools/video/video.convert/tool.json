@@ -1,0 +1,17 @@
+{
+  "id": "video.convert",
+  "name": "Convert Video",
+  "version": "0.1.0",
+  "category": "video",
+  "description": "Convert supported source video files into a clean MP4 production file while preserving the original source file.",
+  "inputs": ["mediaFile", "mediaMetadata"],
+  "outputs": ["processedVideo"],
+  "settings": {
+    "format": "mp4",
+    "quality": "balanced"
+  },
+  "requires": ["ffmpeg"],
+  "supportsBatch": true,
+  "emits": ["video.converted", "job.completed", "job.failed"],
+  "errors": ["VIDEO_001", "VIDEO_002"]
+}
