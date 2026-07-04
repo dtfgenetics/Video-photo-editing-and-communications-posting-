@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-engine.local/schemas/asset_manifest.schema.json",
+  "title": "Asset Manifest",
+  "type": "object",
+  "required": ["assetId", "type", "path", "createdAt"],
+  "properties": {
+    "assetId": { "type": "string" },
+    "type": { "type": "string", "enum": ["video", "image", "audio", "font", "template", "caption", "document", "other"] },
+    "path": { "type": "string" },
+    "originalFilename": { "type": "string" },
+    "sha256": { "type": "string" },
+    "fileSize": { "type": "integer" },
+    "projectId": { "type": "string" },
+    "brandId": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "sourceType": { "type": "string" },
+    "licenseStatus": { "type": "string" },
+    "createdAt": { "type": "string" }
+  },
+  "additionalProperties": false
+}
