@@ -52,9 +52,9 @@ Verified files:
 
 ### Batch 4 - MVP tool manifests
 
-Status: in progress / partial verified
+Status: verified
 
-Expected:
+Verified files:
 
 - tools/metadata/media.probe/tool.json
 - tools/metadata/media.validate/tool.json
@@ -72,7 +72,7 @@ Expected:
 
 Status: in progress
 
-Expected:
+Expected app/core placeholders:
 
 - apps/web/.gitkeep
 - apps/api/.gitkeep
@@ -87,6 +87,49 @@ Expected:
 - core/config/.gitkeep
 - core/security/.gitkeep
 
+Expected plugin placeholders:
+
+- plugins/connectors/.gitkeep
+- plugins/templates/.gitkeep
+- plugins/ai-providers/.gitkeep
+- plugins/storage-providers/.gitkeep
+- plugins/analytics-sources/.gitkeep
+- plugins/compliance-packs/.gitkeep
+
+Expected content/asset placeholders:
+
+- brand-kits/examples/.gitkeep
+- brand-kits/internal/.gitkeep
+- brand-kits/public/.gitkeep
+- content-packs/examples/.gitkeep
+- content-packs/internal/.gitkeep
+- content-packs/public/.gitkeep
+
+Expected runtime placeholders:
+
+- storage/originals/.gitkeep
+- storage/processed/.gitkeep
+- storage/exports/.gitkeep
+- storage/thumbnails/.gitkeep
+- storage/captions/.gitkeep
+- storage/packages/.gitkeep
+- storage/logs/.gitkeep
+- storage/cache/.gitkeep
+- storage/backups/.gitkeep
+- storage/temp/.gitkeep
+
+Expected test/script/release placeholders:
+
+- tests/fixtures/.gitkeep
+- tests/schema-tests/.gitkeep
+- tests/tool-tests/.gitkeep
+- tests/recipe-tests/.gitkeep
+- tests/package-tests/.gitkeep
+- scripts/.gitkeep
+- release/notes/.gitkeep
+- release/installers/.gitkeep
+- release/checksums/.gitkeep
+
 ## Next verification action
 
-Verify Batch 4 tool manifests before adding remaining placeholder folders.
+Finish Batch 5 folder placeholders in small groups, then verify them before adding validation helper scripts.
