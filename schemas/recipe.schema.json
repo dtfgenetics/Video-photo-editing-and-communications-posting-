@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-engine.local/schemas/recipe.schema.json",
+  "title": "Recipe Manifest",
+  "type": "object",
+  "required": ["id", "name", "version", "inputs", "steps", "outputs"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^recipe\\.[a-z0-9_]+$" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "description": { "type": "string" },
+    "inputs": { "type": "array", "items": { "type": "string" } },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tool"],
+        "properties": {
+          "tool": { "type": "string" },
+          "settings": { "type": "object" },
+          "optional": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "outputs": { "type": "array", "items": { "type": "string" } },
+    "failureBehavior": { "type": "string", "enum": ["stop", "continue", "skipOptional"] },
+    "emits": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
