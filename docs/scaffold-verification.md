@@ -70,7 +70,7 @@ Verified files:
 
 ### Batch 5 - Placeholder folder structure
 
-Status: in progress
+Status: verified
 
 Verified app/core placeholders:
 
@@ -118,18 +118,23 @@ Verified runtime placeholders:
 - storage/backups/.gitkeep
 - storage/temp/.gitkeep
 
-Expected test/script/release placeholders:
+Verified test/script/release placeholders:
 
 - tests/fixtures/.gitkeep
 - tests/schema-tests/.gitkeep
 - tests/tool-tests/.gitkeep
 - tests/recipe-tests/.gitkeep
 - tests/package-tests/.gitkeep
-- scripts/.gitkeep
+- scripts/README.md
 - release/notes/.gitkeep
 - release/installers/.gitkeep
 - release/checksums/.gitkeep
 
 ## Next verification action
 
-Add and verify test/script/release placeholders. After that, Batch 5 can be marked verified.
+Batch 6 should add validation helpers only after this scaffold is reviewed:
+
+- schema validation plan
+- sample package generation plan
+- test plan docs
+- no executable build code yet
