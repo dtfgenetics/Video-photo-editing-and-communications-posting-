@@ -1,0 +1,23 @@
+{
+  "id": "recipe.clean_posting_package",
+  "name": "Clean Posting Package",
+  "version": "0.1.0",
+  "description": "Create clean platform-ready video exports, caption placeholders, package manifest, and ZIP package without forced branding.",
+  "inputs": ["video"],
+  "steps": [
+    { "tool": "media.probe" },
+    { "tool": "media.validate" },
+    { "tool": "video.convert", "settings": { "format": "mp4", "quality": "balanced" } },
+    { "tool": "video.export_vertical", "settings": { "width": 1080, "height": 1920 } },
+    { "tool": "video.export_square", "settings": { "width": 1080, "height": 1080 } },
+    { "tool": "video.export_portrait", "settings": { "width": 1080, "height": 1350 } },
+    { "tool": "video.export_landscape", "settings": { "width": 1920, "height": 1080 } },
+    { "tool": "thumbnail.generate" },
+    { "tool": "caption.placeholder" },
+    { "tool": "package.create" },
+    { "tool": "package.zip" }
+  ],
+  "outputs": ["packageZip"],
+  "failureBehavior": "stop",
+  "emits": ["recipe.started", "recipe.completed", "recipe.failed"]
+}
