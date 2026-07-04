@@ -96,7 +96,7 @@ Verified plugin placeholders:
 - plugins/analytics-sources/.gitkeep
 - plugins/compliance-packs/.gitkeep
 
-Expected content/asset placeholders:
+Verified content/asset placeholders:
 
 - brand-kits/examples/.gitkeep
 - brand-kits/internal/.gitkeep
@@ -132,4 +132,4 @@ Expected test/script/release placeholders:
 
 ## Next verification action
 
-Add and verify content/asset placeholders, then continue to runtime placeholders.
+Add and verify runtime placeholders, then continue to test/script/release placeholders.
