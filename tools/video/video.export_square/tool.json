@@ -1,0 +1,18 @@
+{
+  "id": "video.export_square",
+  "name": "Export Square Video",
+  "version": "0.1.0",
+  "category": "video",
+  "description": "Create a clean 1:1 square export for feed-style content.",
+  "inputs": ["processedVideo"],
+  "outputs": ["squareVideo"],
+  "settings": {
+    "width": 1080,
+    "height": 1080,
+    "fitMode": "contain_or_crop"
+  },
+  "requires": ["ffmpeg"],
+  "supportsBatch": true,
+  "emits": ["video.exported", "job.completed", "job.failed"],
+  "errors": ["VIDEO_020", "VIDEO_021"]
+}
