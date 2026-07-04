@@ -1,0 +1,18 @@
+{
+  "id": "video.export_vertical",
+  "name": "Export Vertical Video",
+  "version": "0.1.0",
+  "category": "video",
+  "description": "Create a clean 9:16 vertical export for short-form platforms.",
+  "inputs": ["processedVideo"],
+  "outputs": ["verticalVideo"],
+  "settings": {
+    "width": 1080,
+    "height": 1920,
+    "fitMode": "contain_or_crop"
+  },
+  "requires": ["ffmpeg"],
+  "supportsBatch": true,
+  "emits": ["video.exported", "job.completed", "job.failed"],
+  "errors": ["VIDEO_010", "VIDEO_011"]
+}
