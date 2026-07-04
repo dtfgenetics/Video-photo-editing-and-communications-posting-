@@ -72,7 +72,7 @@ Verified files:
 
 Status: in progress
 
-Expected app/core placeholders:
+Verified app/core placeholders:
 
 - apps/web/.gitkeep
 - apps/api/.gitkeep
@@ -87,12 +87,12 @@ Expected app/core placeholders:
 - core/config/.gitkeep
 - core/security/.gitkeep
 
-Expected plugin placeholders:
+Verified plugin placeholders:
 
 - plugins/connectors/.gitkeep
 - plugins/templates/.gitkeep
 - plugins/ai-providers/.gitkeep
-- plugins/storage-providers/.gitkeep
+- plugins/storage-adapters/.gitkeep
 - plugins/analytics-sources/.gitkeep
 - plugins/compliance-packs/.gitkeep
 
@@ -132,4 +132,4 @@ Expected test/script/release placeholders:
 
 ## Next verification action
 
-Finish Batch 5 folder placeholders in small groups, then verify them before adding validation helper scripts.
+Add and verify content/asset placeholders, then continue to runtime placeholders.
