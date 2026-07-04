@@ -1,0 +1,16 @@
+{
+  "id": "thumbnail.generate",
+  "name": "Generate Thumbnail",
+  "version": "0.1.0",
+  "category": "thumbnails",
+  "description": "Create a preview image from a video file.",
+  "inputs": ["processedVideo"],
+  "outputs": ["thumbnailFile"],
+  "settings": {
+    "format": "jpg"
+  },
+  "requires": ["ffmpeg"],
+  "supportsBatch": true,
+  "emits": ["thumbnail.created", "job.completed", "job.failed"],
+  "errors": ["THUMBNAIL_001"]
+}
