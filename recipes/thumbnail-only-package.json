@@ -1,0 +1,16 @@
+{
+  "id": "recipe.thumbnail_only_package",
+  "name": "Thumbnail Only Package",
+  "version": "0.1.0",
+  "description": "Generate a thumbnail and package manifest from a source video.",
+  "inputs": ["video"],
+  "steps": [
+    { "tool": "media.probe" },
+    { "tool": "media.validate" },
+    { "tool": "thumbnail.generate" },
+    { "tool": "package.create" }
+  ],
+  "outputs": ["packageFolder"],
+  "failureBehavior": "stop",
+  "emits": ["recipe.started", "recipe.completed", "recipe.failed"]
+}
