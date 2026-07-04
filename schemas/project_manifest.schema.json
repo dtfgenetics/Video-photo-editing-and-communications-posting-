@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-engine.local/schemas/project_manifest.schema.json",
+  "title": "Project Manifest",
+  "type": "object",
+  "required": ["projectId", "name", "createdAt", "updatedAt"],
+  "properties": {
+    "projectId": { "type": "string" },
+    "name": { "type": "string" },
+    "createdAt": { "type": "string" },
+    "updatedAt": { "type": "string" },
+    "media": { "type": "array", "items": { "type": "string" } },
+    "recipes": { "type": "array", "items": { "type": "string" } },
+    "brandKits": { "type": "array", "items": { "type": "string" } },
+    "packages": { "type": "array", "items": { "type": "string" } },
+    "settings": { "type": "object" }
+  },
+  "additionalProperties": false
+}
