@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-engine.local/schemas/job.schema.json",
+  "title": "Job Record",
+  "type": "object",
+  "required": ["jobId", "status", "createdAt"],
+  "properties": {
+    "jobId": { "type": "string" },
+    "toolId": { "type": "string" },
+    "recipeId": { "type": "string" },
+    "status": { "type": "string", "enum": ["queued", "running", "completed", "failed", "cancelled", "retrying"] },
+    "priority": { "type": "string", "enum": ["low", "normal", "high", "urgent"] },
+    "progress": { "type": "number", "minimum": 0, "maximum": 100 },
+    "input": { "type": "object" },
+    "output": { "type": "object" },
+    "createdAt": { "type": "string" },
+    "startedAt": { "type": "string" },
+    "finishedAt": { "type": "string" },
+    "errorCode": { "type": "string" },
+    "errorMessage": { "type": "string" },
+    "retryable": { "type": "boolean" },
+    "cancellable": { "type": "boolean" },
+    "maxRetries": { "type": "integer" }
+  },
+  "additionalProperties": false
+}
