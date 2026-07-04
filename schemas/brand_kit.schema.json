@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-engine.local/schemas/brand_kit.schema.json",
+  "title": "Brand Kit",
+  "type": "object",
+  "required": ["brandId", "name", "version", "isInternal"],
+  "properties": {
+    "brandId": { "type": "string" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "description": { "type": "string" },
+    "assets": { "type": "object" },
+    "colors": { "type": "array", "items": { "type": "string" } },
+    "fonts": { "type": "array", "items": { "type": "string" } },
+    "captionTone": { "type": "string" },
+    "hashtags": { "type": "array", "items": { "type": "string" } },
+    "usageRules": { "type": "array", "items": { "type": "string" } },
+    "isInternal": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}
