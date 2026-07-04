@@ -1,0 +1,14 @@
+{
+  "id": "media.validate",
+  "name": "Validate Media",
+  "version": "0.1.0",
+  "category": "metadata",
+  "description": "Check that source media exists, is readable, has supported format data, and is safe to process.",
+  "inputs": ["mediaFile", "mediaMetadata"],
+  "outputs": ["validationReport"],
+  "settings": {},
+  "requires": [],
+  "supportsBatch": true,
+  "emits": ["media.validated", "job.completed", "job.failed"],
+  "errors": ["MEDIA_001", "MEDIA_002", "MEDIA_004"]
+}
