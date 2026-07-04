@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-engine.local/schemas/plugin.schema.json",
+  "title": "Plugin Manifest",
+  "type": "object",
+  "required": ["id", "name", "version", "type", "inputs", "outputs"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^plugin\\.[a-z0-9_]+\\.[a-z0-9_]+$" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "type": { "type": "string", "enum": ["connector", "template-pack", "ai-provider", "storage-provider", "analytics-source", "export-preset-pack", "compliance-pack", "caption-engine"] },
+    "description": { "type": "string" },
+    "permissions": { "type": "array", "items": { "type": "string" } },
+    "settingsSchema": { "type": "object" },
+    "inputs": { "type": "array", "items": { "type": "string" } },
+    "outputs": { "type": "array", "items": { "type": "string" } },
+    "enabledByDefault": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}
