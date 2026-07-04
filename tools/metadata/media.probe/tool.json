@@ -1,0 +1,14 @@
+{
+  "id": "media.probe",
+  "name": "Probe Media",
+  "version": "0.1.0",
+  "category": "metadata",
+  "description": "Read media metadata such as duration, dimensions, codecs, frame rate, audio presence, file size, and rotation.",
+  "inputs": ["mediaFile"],
+  "outputs": ["mediaMetadata"],
+  "settings": {},
+  "requires": ["ffprobe"],
+  "supportsBatch": true,
+  "emits": ["media.probed", "job.completed", "job.failed"],
+  "errors": ["MEDIA_001", "MEDIA_002", "MEDIA_003"]
+}
