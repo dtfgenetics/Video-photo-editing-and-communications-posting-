@@ -130,11 +130,25 @@ Verified test/script/release placeholders:
 - release/installers/.gitkeep
 - release/checksums/.gitkeep
 
+### Batch 6 - Validation helper docs
+
+Status: verified
+
+Verified files:
+
+- docs/validation-plan.md
+- docs/testing.md
+- docs/package-format.md
+- docs/acceptance-criteria.md
+- docs/definition-of-done.md
+
 ## Next verification action
 
-Batch 6 should add validation helpers only after this scaffold is reviewed:
+The scaffold is ready for the first code-planning batch. Do not add full application code yet.
 
-- schema validation plan
-- sample package generation plan
-- test plan docs
-- no executable build code yet
+Recommended Batch 7:
+
+- docs/implementation-order.md
+- docs/first-code-pass.md
+- optional README links to core docs
+- no media processing implementation until the first code pass is approved
