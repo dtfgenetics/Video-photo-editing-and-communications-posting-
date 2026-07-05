@@ -60,6 +60,28 @@ function checkUnique(items, getId, label) {
   }
 }
 
+const requiredFiles = [
+  'README.md',
+  'package.json',
+  '.gitignore',
+  '.env.example',
+  'VERSION',
+  'docs/scope.md',
+  'docs/architecture.md',
+  'docs/repo-structure.md',
+  'docs/push-plan.md',
+  'docs/scaffold-verification.md',
+  'docs/implementation-order.md',
+  'docs/first-code-pass.md',
+  'docs/validation-plan.md',
+  'docs/validation-command-plan.md',
+  'docs/tooling-choice.md',
+  'docs/testing.md',
+  'docs/package-format.md',
+  'docs/acceptance-criteria.md',
+  'docs/definition-of-done.md'
+];
+
 const schemaFiles = [
   'schemas/tool.schema.json',
   'schemas/recipe.schema.json',
@@ -94,6 +116,12 @@ const requiredDirs = [
   'plugins/analytics-sources',
   'plugins/compliance-packs',
   'recipes',
+  'brand-kits/examples',
+  'brand-kits/internal',
+  'brand-kits/public',
+  'content-packs/examples',
+  'content-packs/internal',
+  'content-packs/public',
   'storage/originals',
   'storage/workspace',
   'storage/exports',
@@ -104,11 +132,20 @@ const requiredDirs = [
   'storage/cache',
   'storage/backups',
   'storage/temp',
+  'tests/fixtures',
   'tests/schema-tests',
   'tests/tool-tests',
   'tests/recipe-tests',
-  'tests/package-tests'
+  'tests/package-tests',
+  'scripts',
+  'release/notes',
+  'release/installers',
+  'release/checksums'
 ];
+
+for (const file of requiredFiles) {
+  if (!exists(file)) errors.push(`Missing required file: ${file}`);
+}
 
 for (const file of schemaFiles) {
   if (!exists(file)) errors.push(`Missing schema: ${file}`);
@@ -154,6 +191,8 @@ if (toolPaths.length === 0) warnings.push('No tool manifests found.');
 
 console.log('Creator Engine Doctor');
 console.log('');
+console.log(`Required files checked: ${requiredFiles.length}`);
+console.log(`Required folders checked: ${requiredDirs.length}`);
 console.log(`Schemas: ${schemaFiles.length}`);
 console.log(`Recipes: ${recipes.length}`);
 console.log(`Tools: ${tools.length}`);
