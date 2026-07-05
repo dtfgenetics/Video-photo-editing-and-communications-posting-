@@ -1,0 +1,14 @@
+{
+  "name": "creator-engine",
+  "version": "0.1.0-prealpha",
+  "private": true,
+  "description": "Local-first modular production engine scaffold for media packaging and optional connectors.",
+  "type": "module",
+  "scripts": {
+    "doctor": "node scripts/doctor.mjs",
+    "check": "node scripts/doctor.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
