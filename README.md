@@ -65,6 +65,7 @@ release/       release notes, installers, checksums
 - `docs/first-code-pass.md` - scope for first code batch
 - `docs/validation-plan.md` - validation targets before app code
 - `docs/doctor-command.md` - current scaffold validation command
+- `docs/testing.md` - current test plan and test command
 - `docs/acceptance-criteria.md` - completion rules for tools and recipes
 - `docs/definition-of-done.md` - project-wide done rules
 
@@ -83,6 +84,16 @@ npm run check
 ```
 
 The doctor command checks required files, scaffold folders, readable JSON schemas, recipes, tool manifests, unique IDs, and recipe tool references. It does not run FFmpeg or generate media.
+
+## Tests
+
+Run the current test suite with:
+
+```txt
+npm test
+```
+
+The current test suite checks registry loading and recipe step references. It does not run FFmpeg or generate media.
 
 ## First build order
 
