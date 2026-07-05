@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "doctor": "node scripts/doctor.mjs",
-    "check": "node scripts/doctor.mjs"
+    "check": "node scripts/doctor.mjs",
+    "test": "node --test"
   },
   "engines": {
     "node": ">=20"
