@@ -1,6 +1,12 @@
-import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  checkJsonReadable,
+  checkRequiredDirs,
+  checkRequiredFiles
+} from '../core/validation/index.mjs';
+import { buildRegistry } from '../core/registry/index.mjs';
+import { checkRecipeReferences } from '../core/recipes/index.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -8,57 +14,6 @@ const root = path.resolve(__dirname, '..');
 
 const errors = [];
 const warnings = [];
-
-function rel(...parts) {
-  return path.join(root, ...parts);
-}
-
-function exists(relativePath) {
-  return fs.existsSync(rel(relativePath));
-}
-
-function readJson(relativePath) {
-  const fullPath = rel(relativePath);
-  try {
-    const raw = fs.readFileSync(fullPath, 'utf8');
-    return JSON.parse(raw);
-  } catch (error) {
-    errors.push(`JSON read failed: ${relativePath} - ${error.message}`);
-    return null;
-  }
-}
-
-function walk(dirPath, matcher, results = []) {
-  if (!fs.existsSync(dirPath)) return results;
-  for (const entry of fs.readdirSync(dirPath, { withFileTypes: true })) {
-    const full = path.join(dirPath, entry.name);
-    if (entry.isDirectory()) {
-      walk(full, matcher, results);
-    } else if (matcher(full)) {
-      results.push(full);
-    }
-  }
-  return results;
-}
-
-function relative(fullPath) {
-  return path.relative(root, fullPath).replaceAll(path.sep, '/');
-}
-
-function checkUnique(items, getId, label) {
-  const seen = new Set();
-  for (const item of items) {
-    const id = getId(item);
-    if (!id) {
-      errors.push(`${label} missing id`);
-      continue;
-    }
-    if (seen.has(id)) {
-      errors.push(`Duplicate ${label} id: ${id}`);
-    }
-    seen.add(id);
-  }
-}
 
 const requiredFiles = [
   'README.md',
@@ -79,7 +34,9 @@ const requiredFiles = [
   'docs/testing.md',
   'docs/package-format.md',
   'docs/acceptance-criteria.md',
-  'docs/definition-of-done.md'
+  'docs/definition-of-done.md',
+  'docs/doctor-command.md',
+  'docs/ci-plan.md'
 ];
 
 const schemaFiles = [
@@ -143,59 +100,26 @@ const requiredDirs = [
   'release/checksums'
 ];
 
-for (const file of requiredFiles) {
-  if (!exists(file)) errors.push(`Missing required file: ${file}`);
-}
+errors.push(...checkRequiredFiles(root, requiredFiles));
+errors.push(...checkRequiredDirs(root, requiredDirs));
 
-for (const file of schemaFiles) {
-  if (!exists(file)) errors.push(`Missing schema: ${file}`);
-  else readJson(file);
-}
+const schemaCheck = checkJsonReadable(root, schemaFiles, 'schema');
+errors.push(...schemaCheck.errors);
 
-for (const dir of requiredDirs) {
-  if (!exists(dir)) errors.push(`Missing scaffold folder: ${dir}`);
-}
+const registry = buildRegistry(root);
+errors.push(...registry.errors);
+errors.push(...checkRecipeReferences(registry.recipes, registry.toolById));
 
-const recipePaths = fs.existsSync(rel('recipes'))
-  ? fs.readdirSync(rel('recipes')).filter((name) => name.endsWith('.json')).map((name) => `recipes/${name}`)
-  : [];
-
-const toolPaths = walk(rel('tools'), (full) => path.basename(full) === 'tool.json').map(relative);
-
-const recipes = recipePaths.map((file) => ({ file, data: readJson(file) })).filter((item) => item.data);
-const tools = toolPaths.map((file) => ({ file, data: readJson(file) })).filter((item) => item.data);
-
-checkUnique(recipes, (item) => item.data.id, 'recipe');
-checkUnique(tools, (item) => item.data.id, 'tool');
-
-const toolIds = new Map(tools.map((item) => [item.data.id, item.file]));
-
-for (const recipe of recipes) {
-  if (!Array.isArray(recipe.data.steps)) {
-    errors.push(`Recipe missing steps array: ${recipe.file}`);
-    continue;
-  }
-  for (const step of recipe.data.steps) {
-    if (!step.tool) {
-      errors.push(`Recipe step missing tool id: ${recipe.file}`);
-      continue;
-    }
-    if (!toolIds.has(step.tool)) {
-      errors.push(`Missing tool manifest for recipe step: ${recipe.data.id} -> ${step.tool}`);
-    }
-  }
-}
-
-if (recipePaths.length === 0) warnings.push('No recipes found.');
-if (toolPaths.length === 0) warnings.push('No tool manifests found.');
+if (registry.recipes.length === 0) warnings.push('No recipes found.');
+if (registry.tools.length === 0) warnings.push('No tool manifests found.');
 
 console.log('Creator Engine Doctor');
 console.log('');
 console.log(`Required files checked: ${requiredFiles.length}`);
 console.log(`Required folders checked: ${requiredDirs.length}`);
 console.log(`Schemas: ${schemaFiles.length}`);
-console.log(`Recipes: ${recipes.length}`);
-console.log(`Tools: ${tools.length}`);
+console.log(`Recipes: ${registry.recipes.length}`);
+console.log(`Tools: ${registry.tools.length}`);
 console.log(`Warnings: ${warnings.length}`);
 console.log(`Errors: ${errors.length}`);
 
