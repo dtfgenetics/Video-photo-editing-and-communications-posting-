@@ -64,8 +64,25 @@ release/       release notes, installers, checksums
 - `docs/implementation-order.md` - order for first real implementation work
 - `docs/first-code-pass.md` - scope for first code batch
 - `docs/validation-plan.md` - validation targets before app code
+- `docs/doctor-command.md` - current scaffold validation command
 - `docs/acceptance-criteria.md` - completion rules for tools and recipes
 - `docs/definition-of-done.md` - project-wide done rules
+
+## Scaffold check
+
+Run the current repo validation check with:
+
+```txt
+npm run doctor
+```
+
+or:
+
+```txt
+npm run check
+```
+
+The doctor command checks required files, scaffold folders, readable JSON schemas, recipes, tool manifests, unique IDs, and recipe tool references. It does not run FFmpeg or generate media.
 
 ## First build order
 
