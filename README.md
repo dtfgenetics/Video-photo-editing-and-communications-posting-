@@ -56,6 +56,17 @@ scripts/       development and validation scripts
 release/       release notes, installers, checksums
 ```
 
+## Key docs
+
+- `docs/scaffold-verification.md` - verified scaffold batches
+- `docs/repo-structure.md` - master structure map
+- `docs/push-plan.md` - small batch push plan
+- `docs/implementation-order.md` - order for first real implementation work
+- `docs/first-code-pass.md` - scope for first code batch
+- `docs/validation-plan.md` - validation targets before app code
+- `docs/acceptance-criteria.md` - completion rules for tools and recipes
+- `docs/definition-of-done.md` - project-wide done rules
+
 ## First build order
 
 1. Validate schemas
@@ -73,4 +84,4 @@ release/       release notes, installers, checksums
 
 Never commit API keys, OAuth tokens, Discord webhooks, license keys, private media, generated packages, or customer data.
 
-See `docs/security.md` before adding connectors or integrations.
+Connector and integration documentation will be added before any connector implementation.
