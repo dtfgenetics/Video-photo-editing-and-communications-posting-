@@ -36,7 +36,12 @@ const requiredFiles = [
   'docs/acceptance-criteria.md',
   'docs/definition-of-done.md',
   'docs/doctor-command.md',
-  'docs/ci-plan.md'
+  'docs/ci-plan.md',
+  'docs/outcome-map.md',
+  'docs/app-roadmap.md',
+  'docs/downloadable-app-requirements.md',
+  'docs/code-foundation-status.md',
+  'docs/tool-result-contract.md'
 ];
 
 const schemaFiles = [
@@ -59,6 +64,7 @@ const requiredDirs = [
   'core/validation',
   'core/registry',
   'core/recipes',
+  'core/results',
   'core/jobs',
   'core/events',
   'core/storage',
