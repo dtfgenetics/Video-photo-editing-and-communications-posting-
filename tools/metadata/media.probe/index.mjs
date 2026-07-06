@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { createToolResult } from '../../../core/results/index.mjs';
 
 export const SUPPORTED_MEDIA_EXTENSIONS = new Set([
   '.mp4',
@@ -65,4 +66,25 @@ export function probeMedia(input) {
     isFile: true,
     supported
   };
+}
+
+export function runMediaProbeTool(input) {
+  const mediaMetadata = probeMedia(input);
+  const errors = mediaMetadata.ok
+    ? []
+    : [
+        {
+          code: mediaMetadata.errorCode ?? 'MEDIA_001',
+          message: mediaMetadata.errorMessage ?? 'Media probe failed.'
+        }
+      ];
+
+  return createToolResult({
+    ok: mediaMetadata.ok,
+    toolId: 'media.probe',
+    output: {
+      mediaMetadata
+    },
+    errors
+  });
 }
