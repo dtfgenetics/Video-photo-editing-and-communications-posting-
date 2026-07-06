@@ -1,3 +1,5 @@
+import { createToolResult } from '../../../core/results/index.mjs';
+
 export function validateMedia(probeResult) {
   const errors = [];
   const warnings = [];
@@ -55,4 +57,19 @@ export function validateMedia(probeResult) {
     warnings,
     media: probeResult
   };
+}
+
+export function runMediaValidateTool(input) {
+  const probeResult = input?.mediaMetadata ?? input;
+  const validationReport = validateMedia(probeResult);
+
+  return createToolResult({
+    ok: validationReport.ok,
+    toolId: 'media.validate',
+    output: {
+      validationReport
+    },
+    errors: validationReport.errors,
+    warnings: validationReport.warnings
+  });
 }
