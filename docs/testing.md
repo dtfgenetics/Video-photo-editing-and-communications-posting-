@@ -5,7 +5,7 @@ Testing starts before implementation so every future tool has a clear target.
 ## Test categories
 
 ```txt
-tests/schema-tests/   validates JSON schemas, manifests, and registry links
+tests/schema-tests/   validates JSON schemas, manifests, contracts, and registry links
 tests/tool-tests/     validates independent tool behavior
 tests/recipe-tests/   validates workflow order and outputs
 tests/package-tests/  validates generated package structure
@@ -24,15 +24,23 @@ The current test suite uses Node's built-in test runner and does not require ins
 
 ```txt
 tests/schema-tests/registry-check.test.mjs
+tests/schema-tests/tool-result-contract.test.mjs
+tests/tool-tests/media-probe.test.mjs
+tests/tool-tests/media-validate.test.mjs
+tests/tool-tests/metadata-tool-result.test.mjs
 ```
 
-This test checks that:
+These tests check that:
 
 1. the registry loads current tool manifests
 2. the registry loads current recipes
 3. key tool IDs exist
 4. `recipe.clean_posting_package` exists
 5. recipe steps resolve through registered tool manifests
+6. tool result helpers return the standard result shape
+7. `media.probe` can inspect safe local test files
+8. `media.validate` can validate probe output
+9. metadata tool wrappers return the standard result shape
 
 ## Manual scaffold check
 
