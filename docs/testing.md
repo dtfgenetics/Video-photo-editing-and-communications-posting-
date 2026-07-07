@@ -25,6 +25,7 @@ The current test suite uses Node's built-in test runner and does not require ins
 ```txt
 tests/schema-tests/registry-check.test.mjs
 tests/schema-tests/tool-result-contract.test.mjs
+tests/schema-tests/tool-runner.test.mjs
 tests/tool-tests/media-probe.test.mjs
 tests/tool-tests/media-validate.test.mjs
 tests/tool-tests/metadata-tool-result.test.mjs
@@ -38,9 +39,11 @@ These tests check that:
 4. `recipe.clean_posting_package` exists
 5. recipe steps resolve through registered tool manifests
 6. tool result helpers return the standard result shape
-7. `media.probe` can inspect safe local test files
-8. `media.validate` can validate probe output
-9. metadata tool wrappers return the standard result shape
+7. tool runner lists and runs supported tools
+8. tool runner fails cleanly for unknown tools
+9. `media.probe` can inspect safe local test files
+10. `media.validate` can validate probe output
+11. metadata tool wrappers return the standard result shape
 
 ## Manual scaffold check
 
