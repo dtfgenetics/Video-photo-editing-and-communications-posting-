@@ -65,6 +65,7 @@ const requiredDirs = [
   'core/registry',
   'core/recipes',
   'core/results',
+  'core/tools',
   'core/jobs',
   'core/events',
   'core/storage',
