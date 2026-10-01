@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "repository": "dtfgenetics/Video-photo-editing-and-communications-posting-",
+  "controlRepository": "dtfgenetics/Thc",
+  "defaultBranch": "main",
+  "canonicalDomains": [
+    "Creator Engine",
+    "THC Content Engine",
+    "media processing and packaging automation",
+    "content production recipes and schemas"
+  ],
+  "sourceRoots": [
+    "apps/",
+    "core/",
+    "tools/",
+    "plugins/",
+    "schemas/",
+    "recipes/",
+    "brand-kits/",
+    "content-packs/",
+    "tests/",
+    "docs/",
+    "scripts/",
+    "release/",
+    "package.json",
+    "README.md"
+  ],
+  "protectedPaths": [
+    ".github/workflows/**",
+    ".env*",
+    "storage/**",
+    "release/**"
+  ],
+  "verificationProfiles": {
+    "default": {
+      "commands": [
+        "npm run check",
+        "npm test"
+      ],
+      "ciAuthoritative": true
+    },
+    "schema": {
+      "commands": [
+        "npm run doctor",
+        "npm test"
+      ],
+      "ciAuthoritative": true
+    }
+  },
+  "production": {
+    "directMutation": false,
+    "integrationOwner": "dtfgenetics/Video-photo-editing-and-communications-posting-",
+    "notes": "Independent local-first media product. Runtime storage, secrets, private media, generated packages, and customer data must never be committed; publishing connectors require explicit provider/security review."
+  }
+}
