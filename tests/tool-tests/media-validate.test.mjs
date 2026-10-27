@@ -9,7 +9,7 @@ import { validateMedia } from '../../tools/metadata/media.validate/index.mjs';
 test('media.validate passes a supported probed file', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'creator-engine-'));
   const file = path.join(dir, 'sample.mp4');
-  fs.writeFileSync(file, 'sample');
+  fs.writeFileSync(file, Buffer.concat([Buffer.from([0,0,0,24]),Buffer.from('ftypisom'),Buffer.alloc(16)]));
 
   const probe = probeMedia(file);
   const result = validateMedia(probe);
@@ -29,7 +29,7 @@ test('media.validate fails when no probe result is provided', () => {
 test('media.validate fails unsupported media from probe', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'creator-engine-'));
   const file = path.join(dir, 'sample.txt');
-  fs.writeFileSync(file, 'sample');
+  fs.writeFileSync(file, Buffer.concat([Buffer.from([0,0,0,24]),Buffer.from('ftypisom'),Buffer.alloc(16)]));
 
   const probe = probeMedia(file);
   const result = validateMedia(probe);
@@ -48,4 +48,15 @@ test('media.validate fails empty supported files', () => {
 
   assert.equal(result.ok, false);
   assert.equal(result.errors.some((error) => error.code === 'MEDIA_006'), true);
+});
+
+test('media.validate rejects a fake mp4 despite its supported extension', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'creator-engine-'));
+  try {
+    const file = path.join(dir, 'spoof.mp4');
+    fs.writeFileSync(file, 'not really a movie');
+    const result = validateMedia(probeMedia(file));
+    assert.equal(result.ok, false);
+    assert.ok(result.errors.some(error => error.code === 'MEDIA_007'));
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
