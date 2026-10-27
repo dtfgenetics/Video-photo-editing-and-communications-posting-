@@ -15,8 +15,9 @@ test('media.probe reads basic metadata for a supported file', () => {
   assert.equal(result.ok, true);
   assert.equal(result.filename, 'sample.mp4');
   assert.equal(result.extension, '.mp4');
-  assert.equal(result.fileSizeBytes, 6);
+  assert.equal(result.fileSizeBytes, 24);
   assert.equal(result.supported, true);
+  assert.equal(result.signatureVerified, true);
 });
 
 test('media.probe reports missing files', () => {
