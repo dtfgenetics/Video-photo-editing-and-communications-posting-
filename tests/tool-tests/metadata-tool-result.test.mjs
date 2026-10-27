@@ -9,7 +9,7 @@ import { runMediaValidateTool } from '../../tools/metadata/media.validate/index.
 test('media.probe runnable wrapper returns standard tool result shape', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'creator-engine-'));
   const file = path.join(dir, 'sample.mp4');
-  fs.writeFileSync(file, 'sample');
+  fs.writeFileSync(file, Buffer.concat([Buffer.from([0,0,0,24]), Buffer.from('ftypisom'), Buffer.alloc(16)]));
 
   const result = runMediaProbeTool({ filePath: file });
 
@@ -31,7 +31,7 @@ test('media.probe runnable wrapper reports errors in standard shape', () => {
 test('media.validate runnable wrapper returns standard tool result shape', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'creator-engine-'));
   const file = path.join(dir, 'sample.mp4');
-  fs.writeFileSync(file, 'sample');
+  fs.writeFileSync(file, Buffer.concat([Buffer.from([0,0,0,24]), Buffer.from('ftypisom'), Buffer.alloc(16)]));
 
   const probeResult = runMediaProbeTool({ filePath: file });
   const result = runMediaValidateTool(probeResult.output);
