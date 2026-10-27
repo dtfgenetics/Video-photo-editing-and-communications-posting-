@@ -17,7 +17,7 @@ test('tool runner lists supported tools', () => {
 test('tool runner runs media.probe', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'creator-engine-'));
   const file = path.join(dir, 'sample.mp4');
-  fs.writeFileSync(file, 'sample');
+  fs.writeFileSync(file, Buffer.concat([Buffer.from([0,0,0,24]), Buffer.from('ftypisom'), Buffer.alloc(16)]));
 
   const result = runTool('media.probe', { filePath: file });
 
@@ -29,7 +29,7 @@ test('tool runner runs media.probe', () => {
 test('tool runner runs media.validate after media.probe', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'creator-engine-'));
   const file = path.join(dir, 'sample.mp4');
-  fs.writeFileSync(file, 'sample');
+  fs.writeFileSync(file, Buffer.concat([Buffer.from([0,0,0,24]), Buffer.from('ftypisom'), Buffer.alloc(16)]));
 
   const probeResult = runTool('media.probe', { filePath: file });
   const validateResult = runTool('media.validate', probeResult.output);
