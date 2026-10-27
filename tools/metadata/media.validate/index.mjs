@@ -1,6 +1,7 @@
 import { createToolResult } from '../../../core/results/index.mjs';
+import { inspectMediaStreams } from '../../../core/media/ffprobe.mjs';
 
-export function validateMedia(probeResult) {
+export function validateMedia(probeResult, options = {}) {
   const errors = [];
   const warnings = [];
 
@@ -58,7 +59,21 @@ export function validateMedia(probeResult) {
     });
   }
 
+  // Optional until actual media processing requires stream verification.
+  // Metadata-only API behavior is preserved for existing callers.
+  let streamInspection = null;
+  if (options.requireStreams === true && errors.length === 0) {
+    streamInspection = inspectMediaStreams(probeResult.filePath, options.ffprobeOptions);
+    if (!streamInspection.ok) {
+      errors.push({
+        code: streamInspection.code,
+        message: 'Stream inspection failed; media cannot be approved for processing.'
+      });
+    }
+  }
+
   return {
+    streamInspection,
     ok: errors.length === 0,
     errors,
     warnings,
@@ -68,7 +83,7 @@ export function validateMedia(probeResult) {
 
 export function runMediaValidateTool(input) {
   const probeResult = input?.mediaMetadata ?? input;
-  const validationReport = validateMedia(probeResult);
+  const validationReport = validateMedia(probeResult, input?.validationOptions ?? {});
 
   return createToolResult({
     ok: validationReport.ok,
