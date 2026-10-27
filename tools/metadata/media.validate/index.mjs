@@ -39,6 +39,13 @@ export function validateMedia(probeResult) {
     });
   }
 
+  if (probeResult.supported === true && probeResult.signatureVerified !== true) {
+    errors.push({
+      code: 'MEDIA_007',
+      message: 'Media content signature does not match a supported container.'
+    });
+  }
+
   if (typeof probeResult.fileSizeBytes !== 'number') {
     errors.push({
       code: 'MEDIA_005',
